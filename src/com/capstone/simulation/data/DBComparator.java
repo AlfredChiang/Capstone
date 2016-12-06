@@ -21,7 +21,13 @@ public class DBComparator implements Comparator<DataBlock>{
 			} else if (block1.getAccessCount() < block2.getAccessCount()) {
 				return -1;
 			} else {
-				return 0;
+				if (block1.getTimeStamp() > block2.getTimeStamp()) {
+					return 1;
+				} else if (block1.getAccessCount() < block2.getAccessCount()) {
+					return -1;
+				} else {
+					return 0;
+				}
 			}
 		} else if (block1 != null) {
 			return 1;

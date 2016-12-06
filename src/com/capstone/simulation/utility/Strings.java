@@ -14,9 +14,16 @@ public class Strings {
 	
 	public static final String algorithmType = "AlgorithmType";
 	
+	public static final String bloomFilterType = "BloomfilterType";
+	
 	public static final String experimentVariable = "ExperimentVariable";
 	
 	public static final String traceFile = "TraceFile";
 	
-	public static final String zero = "0"; 
+	public static final String diskSize = "DiskSize";
+	
+	public static final String zero = "0";
+	public static final String one = "1";
+	
+	public static final String requestSizeFactor = "RequestSize";
 }

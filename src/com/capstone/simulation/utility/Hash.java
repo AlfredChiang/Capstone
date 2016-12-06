@@ -7,7 +7,7 @@ import com.google.common.hash.Hashing;
 
 public class Hash {
 	private final static int DATA_SIZE = 4; // Represents data size of int in bytes
-	private int hashFunctionsCount;
+	private int hashFunctionsCount = 3;
 	
 	private static final Hash hash = new Hash();
 
@@ -160,14 +160,14 @@ public class Hash {
 	 * @param data for which hash values are calculated
 	 * @return hash values as array of integers
 	 */
-    public int[] generateHashValues(int data) {
+    public synchronized int[] generateHashValues(int data) {
     	int[] hashValues = new int[getHashFunctionsCount()];
 		byte[] dataBytes = ByteBuffer.allocate(DATA_SIZE).putInt(data).array();
 		HashFunction murmur = Hashing.murmur3_32();
 
 		for (int i = 0; i < hashValues.length; i++) {
-//			TODO Add % operation to make sure hashValues are less than bloomfilter size
-			hashValues[i] = (Hash.jenkins32(dataBytes) + murmur.hashInt(data).asInt());
+			hashValues[i] = (Hash.jenkins32(dataBytes) + i * murmur.hashInt(data).asInt());
+//			System.out.println("Generated " + i + "th hash " + hashValues[i] + " for data " + data);
 		}
 		return hashValues;
     }

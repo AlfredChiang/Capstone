@@ -1,7 +1,9 @@
 package com.capstone.simulation.utility;
 
 public enum Algorithm {
-	SummaryCache,
+	RobinHood,
 	GreedyForwarding,
-	NChance
+	NChance,
+	CustomAlgo,
+	KSequence
 }
